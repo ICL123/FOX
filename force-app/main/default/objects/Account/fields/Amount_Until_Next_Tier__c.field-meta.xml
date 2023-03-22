@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_Until_Next_Tier__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ( Total_Spending__c &lt;  $CustomMetadata.Support_Tier__mdt.Bronze.Minimum_Spending__c,
+     $CustomMetadata.Support_Tier__mdt.Bronze.Minimum_Spending__c - Total_Spending__c,
+     IF ( Total_Spending__c &lt;  $CustomMetadata.Support_Tier__mdt.Silver.Minimum_Spending__c,
+          $CustomMetadata.Support_Tier__mdt.Silver.Minimum_Spending__c - Total_Spending__c,
+          IF ( Total_Spending__c &lt;  $CustomMetadata.Support_Tier__mdt.Gold.Minimum_Spending__c,
+               $CustomMetadata.Support_Tier__mdt.Gold.Minimum_Spending__c - Total_Spending__c,
+               0
+          )
+     )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Amount Until Next Tier</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Currency</type>
+</CustomField>

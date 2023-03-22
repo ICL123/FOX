@@ -1,0 +1,19 @@
+<apex:page controller="InsertEmp">
+    <apex:form >
+    	<apex:pageBlock >
+            First Name:<apex:inputField value="{!e.First_Name__c}"/><br/>
+            Last Name:<apex:inputField value="{!e.Last_Name__c}"/><br/>
+            State:<apex:inputField value="{!e.State__c}"/><br/>
+            DOB:<apex:inputField value="{!e.Date_of_Birth__c}"/><br/>	
+            Zip Code:<apex:inputField value="{!e.Zip__c}"/><br/>
+            Resignation Date:<apex:inputField value="{!e.Resignation_Date__c}"/><br/>
+            Date of Joining:<apex:inputField value="{!e.Date_of_Joining__c}"/><br/>
+            
+            <apex:pageBlockButtons >
+        		<apex:commandButton action="{!insertRec}" value="Save"/>
+        	</apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        
+    </apex:form>
+</apex:page>

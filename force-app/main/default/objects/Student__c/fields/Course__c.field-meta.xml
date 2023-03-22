@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Course__c</fullName>
+    <externalId>false</externalId>
+    <label>Course Applying for</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>B.E.</fullName>
+                <default>false</default>
+                <label>B.E.</label>
+            </value>
+            <value>
+                <fullName>B.Arch</fullName>
+                <default>false</default>
+                <label>B.Arch</label>
+            </value>
+            <value>
+                <fullName>M.C.A</fullName>
+                <default>false</default>
+                <label>M.C.A</label>
+            </value>
+            <value>
+                <fullName>B.C.A</fullName>
+                <default>false</default>
+                <label>B.C.A</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

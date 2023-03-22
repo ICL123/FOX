@@ -1,0 +1,9 @@
+<apex:page standardController="Account" extensions="UpdateAccount">
+    <!--<apex:relatedList list="Contacts"/>
+    <apex:relatedList list="Opportunities"/>-->
+    <apex:relatedList list="CombinedAttachments" id="notes" subject="{!$CurrentPage.parameters.id}"/>
+    <apex:form >
+    	<apex:commandButton action="{!save}" value="Save"/>
+        <apex:commandButton action="{!editPage}" value="Back"/>
+    </apex:form>
+</apex:page>

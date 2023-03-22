@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>About_new_project</fullName>
+        <description>About new project</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sjgund9795@empathetic-fox-gy5u3x.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/New_Project</template>
+    </alerts>
+    <alerts>
+        <fullName>New_project</fullName>
+        <ccEmails>saurabh.gund@eternussolutions.com</ccEmails>
+        <description>New project</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sjgund9795@empathetic-fox-gy5u3x.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SalesNewCustomerEmail</template>
+    </alerts>
+    <alerts>
+        <fullName>Project_due_date</fullName>
+        <description>Project due date</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sjgund9795@empathetic-fox-gy5u3x.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sjgund97@espl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Project_due_date</template>
+    </alerts>
+    <alerts>
+        <fullName>Project_due_date_is_near</fullName>
+        <description>Project due date is near</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sjgund9795@empathetic-fox-gy5u3x.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Project_due_date</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Project_Assign</fullName>
+        <field>Start_Date__c</field>
+        <name>Project Assign</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Project_Status</fullName>
+        <field>Status__c</field>
+        <literalValue>Closed</literalValue>
+        <name>Project Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>New Project</fullName>
+        <actions>
+            <name>About_new_project</name>
+            <type>Alert</type>
+        </actions>
+        <actions>
+            <name>Regarding_new_project</name>
+            <type>Task</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>Project_Details__c.CreatedDate</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>PRJ Due date</fullName>
+        <active>true</active>
+        <formula>End_Date__c = Today()-5</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Project_due_date</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Project_Details__c.End_Date__c</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>PRJ Status</fullName>
+        <actions>
+            <name>Project_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Project_Details__c.End_Date__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <tasks>
+        <fullName>Regarding_new_project</fullName>
+        <assignedTo>sjgund9795@empathetic-fox-gy5u3x.com</assignedTo>
+        <assignedToType>user</assignedToType>
+        <dueDateOffset>0</dueDateOffset>
+        <notifyAssignee>false</notifyAssignee>
+        <offsetFromField>Project_Details__c.CreatedDate</offsetFromField>
+        <priority>High</priority>
+        <protected>false</protected>
+        <status>Not Started</status>
+        <subject>Regarding new project</subject>
+    </tasks>
+</Workflow>

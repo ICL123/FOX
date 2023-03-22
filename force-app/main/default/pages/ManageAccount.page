@@ -1,0 +1,91 @@
+<apex:page Controller="AccountManager"  sidebar="false">
+  <apex:form >
+      <!--<img src="{!$Resource.AMimg}"/>-->
+      <!--Alphabetical search-->
+      <div align="right">
+        <apex:panelGrid >
+            <apex:repeat value="{!alphabet}" var="alph">
+                <apex:commandLink value="{!alph} | " action="{!getalphaSearch}" reRender="table">
+                <apex:param name="a" value="{!alph}" assignTo="{!alphaSearchConct}"/>
+                </apex:commandLink>
+                </apex:repeat>
+        </apex:panelGrid>
+    </div>
+    
+                  
+      <!--Search box for account fetching-->
+    <apex:pageBlock title="Search Account">
+        
+       
+     <apex:pageBlockButtons location="top">
+        <apex:commandButton value="Search" action="{!FetchAccountMethod}"/>
+        <apex:commandButton value="Clear" action="{!clearSearchBox}"/>
+     </apex:pageBlockButtons>
+        <apex:inputText label="Search Account" value="{!InputBox}" html-placeholder="Enter min 3 chars to Search"/>    
+ <apex:pageBlockSection title="Result">
+        <apex:pageBlockTable value="{!ListOfAccount}" var="AL">
+<apex:column headerValue="Account Name">            
+            <apex:commandLink rerender="contactDetails" value=" {!AL.Name}" action="{!ContactLists}">
+         
+         <apex:param name="id" value="{!AL.id}"/>
+       </apex:commandLink>
+      </apex:column>
+            
+           
+            <apex:column value="{!AL.Type}"/>
+            <!--for delete link-->
+            <apex:column >
+       <apex:outputLink title="" value="/{!AL.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="font-weight:bold">Edit</apex:outputLink>&nbsp;|&nbsp;
+       <a href="javascript:if (window.confirm('Are you sure?')) DeleteAccount('{!AL.Id}');" style="font-weight:bold">Del</a>
+     </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Record count">
+            <apex:outputText value="{!Accsize}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+      
+         <!--List of Related Contact--> 
+      <apex:pageBlock title="Contact">
+   <apex:outputPanel id="contactDetails">
+     <apex:pageBlockTable value="{!conList}" var="con" id="conlist" title="Contact">
+     <apex:column value="{!con.Name}"/>
+     <apex:Column value="{!con.Phone}" />
+     <apex:Column value="{!con.Email}" />
+     </apex:pageBlockTable>
+        
+      </apex:outputPanel>
+  </apex:pageBlock>
+
+      <!--List of Account-->
+      <apex:pageBlock title="Account" id="table" >
+    
+      
+      <apex:pageBlockTable value="{!contactList}" var="a" id="list">
+      
+        <apex:column headerValue="Account Name">
+        <apex:commandLink rerender="contactDetails" value=" {!a.Name}" action="{!ContactLists}">
+         
+         <apex:param name="id" value="{!a.id}"/>
+       </apex:commandLink> 
+         </apex:column>
+        <apex:column value="{!a.type}" />
+        <apex:column value="{!a.billingstreet}"/>
+        <apex:column value="{!a.billingCity}" />
+        <apex:column value="{!a.billingCountry}" />
+        <apex:column value="{!a.billingPostalCode}"/>
+        <apex:column value="{!a.Website}"/>
+      </apex:pageBlockTable>
+     
+           </apex:pageBlock>
+  
+    
+
+      <apex:actionFunction action="{!DeleteAccount}" name="DeleteAccount" reRender="form" >
+   <apex:param name="accountid" value="" assignTo="{!SelectedAccountId}"/>
+</apex:actionFunction>
+    
+    
+    </apex:form>   
+  
+</apex:page>

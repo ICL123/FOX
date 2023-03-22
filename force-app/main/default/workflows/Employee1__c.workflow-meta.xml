@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>About_employee_status</fullName>
+        <description>About employee status</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <recipients>
+            <recipient>sjgund9795@empathetic-fox-gy5u3x.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Employee_Status</template>
+    </alerts>
+    <alerts>
+        <fullName>Employee_deactivated</fullName>
+        <ccEmails>saurabh.gund@eternussolutions.com</ccEmails>
+        <description>Employee deactivated</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>Employee_status</fullName>
+        <ccEmails>saurabh.gund@eternussolutions.com</ccEmails>
+        <description>Employee status</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE</template>
+    </alerts>
+    <alerts>
+        <fullName>Update_EMP_Status</fullName>
+        <ccEmails>saurabh.gund@eternusolutions.com</ccEmails>
+        <ccEmails>sjgund9795@gmail.com</ccEmails>
+        <description>Update EMP Status</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Manager_Email__c</field>
+            <type>email</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/SupportEscalatedCaseNotification</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Current_EMP_Status</fullName>
+        <field>RecordTypeId</field>
+        <lookupValue>Non_Technical</lookupValue>
+        <lookupValueType>RecordType</lookupValueType>
+        <name>Current EMP Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Current Employee</fullName>
+        <actions>
+            <name>Current_EMP_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Employee1__c.Current_Employee__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>EMP Deactivate</fullName>
+        <actions>
+            <name>About_employee_status</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>Employee1__c.Is_Active__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

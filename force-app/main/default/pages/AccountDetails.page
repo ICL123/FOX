@@ -1,0 +1,35 @@
+<apex:page standardController="Account" extensions="UpdateAccount" showHeader="false">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection title="Account Details" >
+                <table border="1">
+                    <tr> 
+                        <th>Account ID</th>
+                        <th>{!Account.Id}</th>
+                    </tr>
+                    <tr>
+                        <th>Account Name</th>
+                        <th>{!Account.Name}</th>
+                    </tr>
+            		<tr>
+                        <th>Account Type</th>
+                        <th>{!Account.Type}</th>
+                    </tr>
+            		<tr><th>Source</th>
+                        <th>{!Account.AccountSource}</th>
+                    </tr>
+            		<tr>
+                        <th>Industry</th>
+                        <th>{!Account.Industry}</th>
+                    </tr>
+                </table>
+           	</apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:commandButton action="{!editPage}" value="Edit"/>	
+    </apex:form>
+    <table border="1">
+    	<tr>
+            <th><apex:relatedList list="CombinedAttachments" id="notes" subject="{!$CurrentPage.parameters.id}"/></th>
+        </tr>    
+    </table>
+</apex:page>

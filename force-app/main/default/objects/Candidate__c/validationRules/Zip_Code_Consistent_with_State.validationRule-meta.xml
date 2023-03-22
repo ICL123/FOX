@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zip_Code_Consistent_with_State</fullName>
+    <active>true</active>
+    <description>Validates candidate Zip/Postal Code by looking up the first five characters of the value in a custom object called Zip_Code__c. Error if the zip code is not found or the candidate State does not match the corresponding State in the object</description>
+    <errorConditionFormula>VLOOKUP($ObjectType.Zip_Code__c.Fields.State__c, $ObjectType.Zip_Code__c.Fields.Name, LEFT( Zip_Postal_Code__c ,5) ) &lt;&gt; State_Province__c</errorConditionFormula>
+    <errorDisplayField>Zip_Postal_Code__c</errorDisplayField>
+    <errorMessage>Candidate Zip Code does not exist in specified State</errorMessage>
+</ValidationRule>

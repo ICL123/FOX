@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Every_Position_Must_Have_a_Hiring_Mgr</fullName>
+    <active>true</active>
+    <description>Every position record must have a hiring manager</description>
+    <errorConditionFormula>ISBLANK (Hiring_Manager__c) &amp;&amp; $Profile.Name &lt;&gt; &quot;System Administrator&quot;</errorConditionFormula>
+    <errorDisplayField>Hiring_Manager__c</errorDisplayField>
+    <errorMessage>Every Position must have a Hiring Manager.</errorMessage>
+</ValidationRule>

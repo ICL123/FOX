@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_Indicator__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE (text (Status__c),
+&quot;Active&quot;, IMAGE (&quot;/img/samples/color_green.gif&quot;,&quot;green&quot;),
+&quot;On Notice Period&quot;, IMAGE (&quot;/img/samples/color_yellow.gif &quot;, &quot;yellow&quot;),
+&quot;In-Active&quot;, IMAGE (&quot;/img/samples/color_red.gif&quot;,&quot;red&quot;),
+&quot;default&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status Indicator</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

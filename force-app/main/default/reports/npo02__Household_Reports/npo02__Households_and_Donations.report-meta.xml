@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>npo02__Household__c.npo02__Contacts__r$Name</field>
+    </columns>
+    <columns>
+        <field>npo02__Household__c.npo02__Contacts__r.OpportunityContactRoles$Role</field>
+    </columns>
+    <columns>
+        <field>npo02__Household__c.npo02__Contacts__r.OpportunityContactRoles$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>npo02__Household__c.npo02__Contacts__r.OpportunityContactRoles$Amount</field>
+    </columns>
+    <columns>
+        <field>npo02__Household__c.npo02__Contacts__r.OpportunityContactRoles$StageName</field>
+    </columns>
+    <columns>
+        <field>npo02__Household__c.npo02__Contacts__r.OpportunityContactRoles$CloseDate</field>
+    </columns>
+    <description>Donations grouped by Household</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>npo02__Household__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Households and Donations</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>npo02__Households_and_Donations__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>npo02__Household__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

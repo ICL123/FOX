@@ -1,0 +1,41 @@
+<apex:page controller="ContactController" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Search">
+                <apex:pageBlockButtons location="top">
+            		<apex:commandButton value="Search" action="{!getAccount}"/>
+                    <apex:commandButton value="Clear" action="{!clearSearchBox}"/>
+        		</apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:inputText label="Search Account/Contact" value="{!input}"/>
+        <apex:outputPanel >
+            <apex:pageBlock >
+        		<apex:pageBlockSection title="List of Account" >
+                	<apex:pageBlockTable value="{!accountList}" var="ac">
+                    	<apex:column headerValue="Account Name">
+							<apex:commandLink value="{!ac.Name}">
+                            </apex:commandLink>
+                    	</apex:column>
+                        <apex:column >
+                        	<apex:inputCheckbox label="checked"/>
+                        </apex:column>
+                	</apex:pageBlockTable>
+            	</apex:pageBlockSection>
+                <apex:pageBlockSection title="List of Contact" >
+                	<apex:pageBlockTable value="{!contactList}" var="con">
+                    	<apex:column headerValue="Contact Name">
+                    		<apex:commandLink value="{!con.Name}"></apex:commandLink>
+                    	</apex:column>  
+                        <apex:column >
+                        	<apex:inputCheckbox />
+                        </apex:column>                        
+                	</apex:pageBlockTable>
+            	</apex:pageBlockSection>
+        <apex:pageBlock >
+                <apex:pageBlockButtons location="bottom">
+            		<apex:commandButton value="Delete" id="del" action="{!deleteRecord}"/>
+        		</apex:pageBlockButtons>
+        </apex:pageBlock>                
+            </apex:pageBlock>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

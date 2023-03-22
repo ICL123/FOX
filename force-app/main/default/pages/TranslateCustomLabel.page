@@ -1,0 +1,13 @@
+<apex:page controller="TranslateMessage" language="{!languageChoosen}">
+    <apex:form >
+    	<apex:pageBlock >
+    		<apex:selectList value="{!languageChoosen}" size="1">
+            	<h1>
+        			{!$Label.Translate}
+                </h1><br/>
+            	<apex:selectoptions value="{!Langlist}"/>
+            	<apex:actionsupport event="onchange"/>
+    		</apex:selectList>
+    	</apex:pageBlock>
+	</apex:form>
+</apex:page>

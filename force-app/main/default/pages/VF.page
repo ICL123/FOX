@@ -1,0 +1,27 @@
+<apex:page standardController="Account" extensions="A" recordSetVar="items"> <!--here enquiry__c is a custom object -->
+    <apex:form >
+        <apex:pageblock id="resultPanel">
+            <apex:pageblocksection >
+               <apex:pageBlockTable value="{!items}" var="en" width="200"  >
+                   <apex:column value="{!en.Name}"/>
+                   <apex:column value="{!en.Type}"/>
+                   <apex:column value="{!en.AccountSource}"/>
+                   <apex:column value="{!en.Industry}"/>
+                   <apex:column headerValue="Action">
+                       <apex:commandButton value="convert to student" onclick="callActionMethod({!en.id})" />
+                   </apex:column>  
+                   <apex:column headerValue="Record ID">
+                       <apex:outputText value="{!en.Id}"  />
+                   </apex:column>
+                  
+               </apex:pageBlockTable> 
+                <apex:commandButton value="new" action="{!newenquiry}"/>
+            </apex:pageblocksection>
+        </apex:pageblock>
+        <apex:actionFunction name="callConvertStudentMethod" action="{!convertStudent}" reRender="resultPanel" >
+            <apex:param name="firstParam" assignTo="{!i}" value="" />
+        </apex:actionFunction>
+
+    </apex:form>
+
+</apex:page>

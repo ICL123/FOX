@@ -1,0 +1,18 @@
+<apex:page controller="CountryDependentController" showHeader="true" sidebar="false">    
+    <apex:pageBlock >
+        <apex:form >
+        <!-- actionFunction -->
+            <apex:actionFunction action="{!getCountrylist}" name="rerenderCities" rerender="Cities" >
+                <apex:param name="firstParam" assignTo="{!country}" value="" />
+            </apex:actionFunction>
+            
+            <!-- SelectList-->
+            Country :   <apex:selectList value="{!country}" size="1" onchange="rerenderCities(this.value)">
+                            <apex:selectOptions value="{!CountryList}"></apex:selectOptions>
+                        </apex:selectList> <br/> <br/>
+            City :      <apex:selectList id="Cities" value="{!cities}" size="1">
+                            <apex:selectOptions value="{!CityList}"></apex:selectOptions>
+                        </apex:selectList>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

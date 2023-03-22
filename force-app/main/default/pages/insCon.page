@@ -1,0 +1,15 @@
+<apex:page controller="InsertRecord" >
+    <apex:pageBlock > 
+    	<apex:form >
+            <apex:pageBlockSection >
+        		<apex:inputField value="{!c.FirstName}"/><br/>
+        		<apex:inputField value="{!c.LastName}"/><br/>
+        		<apex:inputField value="{!c.Email}"/><br/>
+                <apex:inputField value="{!c.MobilePhone}"/><br/>
+                <apex:inputField value="{!c.Phone}"/><br/>
+            </apex:pageBlockSection>
+            <apex:commandButton action="{!oppPage}" value="Next"/>
+            <apex:commandButton action="{!accPage}" value="Back"/>
+    	</apex:form>
+    </apex:pageBlock>
+</apex:page>

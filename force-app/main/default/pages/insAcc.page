@@ -1,0 +1,12 @@
+<apex:page controller="InsertRecord" >
+    <apex:pageBlock > 
+    	<apex:form >
+            <apex:pageBlockSection >
+                <apex:inputField value="{!a.Name}"/><br/>
+        		<apex:inputField value="{!a.Type}"/><br/>
+        		<apex:inputField value="{!a.Industry}"/><br/>
+            </apex:pageBlockSection>
+            <apex:commandButton action="{!conPage}" value="Next"/>
+    	</apex:form>
+    </apex:pageBlock>
+</apex:page>

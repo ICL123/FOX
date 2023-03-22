@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Emp_Status</fullName>
+    <active>true</active>
+    <errorConditionFormula>$ObjectType.Employee1__c.Fields.Status__c  &lt;&gt; &quot;In-Active&quot;</errorConditionFormula>
+    <errorMessage>Employee must be active</errorMessage>
+</ValidationRule>

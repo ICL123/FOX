@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Manager</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Employee1__c.Role__r.Name</field>
+            <operation>equals</operation>
+            <value>Project Manager</value>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Employee1__c</referenceTo>
+    <relationshipLabel>EMPLOYEES</relationshipLabel>
+    <relationshipName>EMPLOYEES</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

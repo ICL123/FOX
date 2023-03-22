@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bank_account_details_cannot_be_null</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR( 
+    ISBLANK( Bank_Account_Number__c ),
+    ISBLANK( Bank_Details__c )
+   
+)</errorConditionFormula>
+    <errorMessage>Please fill bank details</errorMessage>
+</ValidationRule>

@@ -1,0 +1,26 @@
+<apex:page controller="InsertRecord">
+    <apex:pageBlock >
+        <apex:form >
+            <apex:pageBlockSection title="Account Details">
+                <apex:outputField value="{!a.Name}"/><br/>
+                <apex:outputField value="{!a.Type}"/><br/>
+                <apex:outputField value="{!a.Industry}"/><br/>
+            </apex:pageBlockSection><hr/>
+            <apex:pageBlockSection title="Contact Details">
+                <apex:outputField value="{!c.FirstName}"/><br/>
+                <apex:outputField value="{!c.LastName}"/><br/>
+                <apex:outputField value="{!c.Email}"/><br/>
+                <apex:outputField value="{!c.MobilePhone}"/><br/>
+                <apex:outputField value="{!c.Phone}"/><br/>
+            </apex:pageBlockSection><hr/>
+            <apex:pageBlockSection title="Opportunity Details">
+                <apex:outputField value="{!o.Name}"/><br/>
+                <apex:outputField value="{!o.Type}"/><br/>
+                <apex:outputField value="{!o.LeadSource}"/><br/>
+                <apex:outputField value="{!o.StageName}"/><br/>
+                <apex:outputField value="{!o.CloseDate}"/><br/>
+            </apex:pageBlockSection><hr/>
+            <apex:commandButton action="{!saveRec}" value="Save All"/>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

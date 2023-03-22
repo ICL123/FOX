@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_Installation__c</fullName>
+    <externalId>false</externalId>
+    <label>Type of Installation</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rooftop</fullName>
+                <default>false</default>
+                <label>Rooftop</label>
+            </value>
+            <value>
+                <fullName>Carport</fullName>
+                <default>false</default>
+                <label>Carport</label>
+            </value>
+            <value>
+                <fullName>Ground Mounted</fullName>
+                <default>false</default>
+                <label>Ground Mounted</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

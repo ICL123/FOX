@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Completion_of_course</fullName>
+        <description>Completion of course</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>sjgund9795@empathetic-fox-gy5u3x.com</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>sjgund97@espl.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Course_completion_status</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Course_end_date</fullName>
+        <field>Status__c</field>
+        <literalValue>Completed</literalValue>
+        <name>Course end date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>In_prgs</fullName>
+        <field>Status__c</field>
+        <literalValue>In Progress</literalValue>
+        <name>In prgs</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Status_UPD</fullName>
+        <field>Status__c</field>
+        <literalValue>Open</literalValue>
+        <name>Status UPD</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Completion of subject</fullName>
+        <actions>
+            <name>Completion_of_course</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Subject__c.Status__c</field>
+            <operation>equals</operation>
+            <value>Completed</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Course End Date</fullName>
+        <actions>
+            <name>Course_end_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Subject__c.Course_End_Date__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>In progress</fullName>
+        <actions>
+            <name>In_prgs</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Subject__c.Start_Date__c</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Subject__c.Course_End_Date__c</field>
+            <operation>greaterThan</operation>
+            <value>TODAY</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Status update</fullName>
+        <actions>
+            <name>Status_UPD</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>Start_Date__c &lt; TODAY()</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

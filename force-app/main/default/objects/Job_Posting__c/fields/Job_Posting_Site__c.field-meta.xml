@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Posting_Site__c</fullName>
+    <externalId>false</externalId>
+    <label>Job Posting Site</label>
+    <referenceTo>Job_Posting_Site__c</referenceTo>
+    <relationshipLabel>Job Postings</relationshipLabel>
+    <relationshipName>Job_Postings</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

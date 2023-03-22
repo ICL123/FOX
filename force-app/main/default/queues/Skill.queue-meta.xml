@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Skill</name>
+    <queueMembers>
+        <users>
+            <user>sjgund97@espl.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Job_Posting_Site__c</sobjectType>
+    </queueSobject>
+</Queue>

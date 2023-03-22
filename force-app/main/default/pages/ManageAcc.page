@@ -1,0 +1,54 @@
+<apex:page standardController="Account" recordSetVar="accounts" sidebar="false" extensions="ClassDispContact" >
+  <apex:form >
+
+    <apex:pageBlock title="Search Account">
+     	<apex:pageBlockButtons location="top">
+        	<apex:commandButton value="Search" action="{!FetchAccountMethod}"/>
+     	</apex:pageBlockButtons>
+        <apex:inputText label="Search Account" value="{!InputBox}"/>    
+ 		<apex:pageBlockSection title="Result">
+        	<apex:pageBlockTable value="{!ListOfAccount}" var="AL">
+				<apex:column headerValue="Account Name">            
+            		<apex:commandLink rerender="contactDetails" value=" {!AL.Name}" action="{!ContactLists}">
+         				<apex:param name="id" value="{!AL.id}"/>
+       				</apex:commandLink>
+    			</apex:column>
+                <apex:column headerValue="Account Type">            
+            		<apex:commandLink rerender="contactDetails" value=" {!AL.Type}" action="{!ContactLists}">
+         				<apex:param name="Type" value="{!AL.Type}"/>
+       				</apex:commandLink>
+    			</apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection title="Record count">
+            <apex:outputText value="{!Accsize}"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+   
+      	<apex:pageBlock title="Account" >
+      		<apex:pageBlockTable value="{!ListOfAccount}" var="a" id="list">
+        		<apex:column headerValue="Account Name">
+                    <apex:outputLink value="/{!a.Id}">{!a.Name}</apex:outputLink>
+         			
+       				
+         		</apex:column>
+                <!--<apex:outputlink value="" onclick="window.open('{!a.Id}','_blank');"></apex:outputlink>-->
+
+        		<apex:column value="{!a.type}" />
+                <apex:column value="{!a.Phone}"/>
+      		</apex:pageBlockTable>
+        </apex:pageBlock>
+   
+      	<!--<apex:pageBlock title="Contact">
+   			<apex:outputPanel id="contactDetails">
+     			<apex:pageBlockTable value="{!conList}" var="con" id="conlist" title="Contact">
+     				<apex:column value="{!con.Name}"/>
+     				<apex:column value="{!con.Phone}" />
+     				<apex:column value="{!con.Email}" />
+     			</apex:pageBlockTable>
+      		</apex:outputPanel>
+  		</apex:pageBlock>-->
+      
+     </apex:form>  
+    <apex:relatedList list="Contacts"/>
+</apex:page>

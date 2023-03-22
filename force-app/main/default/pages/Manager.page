@@ -1,0 +1,27 @@
+<apex:page standardController="Event"  > 
+<!--<apex:includeScript value="{!URLFOR($Resource.jQuery, '/js/jquery-1.5.1.min.js')}"  />-->
+<apex:outputPanel id="myevententry">
+ 	<apex:messages />
+	<apex:form >	
+  	Subject:<apex:inputField value="{!Event.Subject}" /><BR />
+	Date:<apex:inputField value="{!Event.ActivityDateTime}" /><BR />
+	Minutes:<apex:inputField value="{!Event.DurationInMinutes}" /><BR />
+    Related :<apex:inputField value="{!Event.WhatId}"/>
+	
+	<apex:inputHidden id="whatid" value="{!Event.WhatId}" />
+	<apex:inputHidden id="eid" value="{!Event.Id}" />
+	<apex:commandButton value="Save" action="{!quicksave}" />::{!Event.Id}
+  </apex:form>
+  <script>
+	j$ = jQuery.noConflict();
+	function init() {
+		var whatid = window.location.href.split("wid=")[1];
+		j$("[id$='whatid']").val(whatid);
+		if("{!Event.Id}" != "") {
+			window.location.href = "/apex/newevent?id={!Event.Id}";
+		}
+	}
+	init();
+  </script>
+</apex:outputpanel>
+</apex:page>

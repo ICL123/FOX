@@ -1,0 +1,15 @@
+<apex:page controller="InsertRecord" >
+    <apex:pageBlock > 
+    	<apex:form >
+            <apex:pageBlockSection >
+        		<apex:inputField value="{!o.Name}"/><br/>
+        		<apex:inputField value="{!o.Type}"/><br/>
+        		<apex:inputField value="{!o.LeadSource}"/><br/>
+                <apex:inputField value="{!o.StageName}"/><br/>
+                <apex:inputField value="{!o.CloseDate}"/><br/>
+            </apex:pageBlockSection>
+            <apex:commandButton action="{!revPage}" value="Next"/>
+            <apex:commandButton action="{!conPage}" value="Back"/>
+    	</apex:form>
+    </apex:pageBlock>
+</apex:page>

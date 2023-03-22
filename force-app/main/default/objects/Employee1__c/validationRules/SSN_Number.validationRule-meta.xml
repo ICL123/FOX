@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SSN_Number</fullName>
+    <active>true</active>
+    <errorConditionFormula>SSN__c &gt;9999999999</errorConditionFormula>
+    <errorMessage>No. of digits must be less than or equal to 10</errorMessage>
+</ValidationRule>

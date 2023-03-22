@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_working_date_cannot_be_greater_than</fullName>
+    <active>false</active>
+    <errorConditionFormula>Date_of_Joining__c  &lt;  Last_Working_Day__c</errorConditionFormula>
+    <errorMessage>Last working day cannot be greater than joining date</errorMessage>
+</ValidationRule>
